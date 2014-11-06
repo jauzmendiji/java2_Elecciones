@@ -1,6 +1,6 @@
 public class EspacioPublico {
 	private String tipo;
-	private String direccion;
+	private String direccionep;
 	private int area;
 
 	public void setTipo (String mota){
@@ -11,11 +11,11 @@ public class EspacioPublico {
 		return tipo;
 	}
 
-	public void setDireccion (String dir){
-		direccion = dir;
+	public void setDireccionep (String dir){
+		direccionep = dir;
 	}
-	public String getDireccion(){
-		return direccion;
+	public String getDireccionep(){
+		return direccionep;
 	}
 
 	public void setArea (int m2){

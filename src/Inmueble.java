@@ -1,22 +1,22 @@
 public class Inmueble {
-	private String direccion;
-	private String localidad;
+	private String direccionin;
+	private String localidadin;
 	private int cp;
 
 
-	public void setDireccion (String dir){
-		direccion = dir;
+	public void setDireccionin (String dir){
+		direccionin = dir;
 	}
-	public String getDireccion(){
-		return direccion;
-	}
-
-	public void setLocalidad (String loc){
-		localidad = loc;
+	public String getDireccionin(){
+		return direccionin;
 	}
 
-	public String getLocalidad(){
-		return localidad;
+	public void setLocalidadin (String loc){
+		localidadin = loc;
+	}
+
+	public String getLocalidadin(){
+		return localidadin;
 	}
 
 	public void setCp (int codp){

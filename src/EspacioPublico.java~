@@ -1,12 +1,14 @@
 public class EspacioPublico {
-	private int extension;
+	private String tipo;
 	private String direccion;
+	private int area;
 
-	public void setExtension (int ex){
-		extension = ex;
+	public void setTipo (String mota){
+		tipo = mota;
 	}
-	public int getExtension(){
-		return extension;
+	
+	public String getTipo(){
+		return tipo;
 	}
 
 	public void setDireccion (String dir){
@@ -15,4 +17,13 @@ public class EspacioPublico {
 	public String getDireccion(){
 		return direccion;
 	}
+
+	public void setArea (int m2){
+		area = m2;
+	}
+	public int getArea(){
+		return area;
+	}
+
+	
 }

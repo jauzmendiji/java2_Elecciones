@@ -1,13 +1,13 @@
 public class Partido {
-	private String nombre;
+	private String nombrepar;
 	private String siglas;
 	private String repres;
 
-	public void setNombre (String izena){
-		nombre = izena;
+	public void setNombrepar (String izena){
+		nombrepar = izena;
 	}
-	public String getNombre(){
-		return nombre;
+	public String getNombrepar(){
+		return nombrepar;
 	}
 
 	public void setSiglas (String sig){

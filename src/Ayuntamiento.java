@@ -1,21 +1,21 @@
 public class Ayuntamiento {
-	private String direccion;
-	private String localidad;
+	private String direccionay;
+	private String localidaday;
 	private String alcalde;
 	private String partidop;
 
-	public void setDireccion (String dir){
-		direccion = dir;
+	public void setDireccionay (String dir){
+		direccionay = dir;
 	}
-	public String getDireccion(){
-		return direccion;
+	public String getDireccionay(){
+		return direccionay;
 	}
 
-	public void setLocalidad (String loc){
-		localidad = loc;
+	public void setLocalidaday (String loc){
+		localidaday = loc;
 	}
-	public String getLocalidad(){
-		return localidad;
+	public String getLocalidaday(){
+		return localidaday;
 	}
 
 	public void setAlcalde (String alkate){
