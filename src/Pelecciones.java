@@ -1,11 +1,12 @@
 import java.util.*;
+import java.io.*;
 
 public class Pelecciones {
 
 	public static void main (String args[]) {
 
-		String nombre, respnombre, ape1, ape2, dni, fechnaci, direccionin, localidadin, tipo, direccionep, direccionay, localidaday, alcalde, partidop, nombrepar, siglas, repres;
-		int cp, area;
+		String nombre, respnombre, ape1, ape2, dni, direccionin, localidadin, tipo, direccionep, direccionay, localidaday, alcalde, partidop, nombrepar, siglas, repres;
+		int cp, area, edad;
 		
 
 	//Habitante
@@ -29,11 +30,21 @@ public class Pelecciones {
 
 		System.out.print("\nIngresa el DNI: ");
 		dni = sc.nextLine();
-		habitante.setDni(dni);
 
-		System.out.print("\nIngresa la fecha de nacimiento: (DD/MM/AAAA)    ");
-		fechnaci = sc.nextLine();
-		habitante.setFechnaci(fechnaci);
+		while (dni.length() != 9){
+		System.out.print("Dni incorrecto");
+		System.out.print("\nIngresa el DNI otra vez: ");
+		dni = sc.nextLine();}		
+		habitante.setDni(dni);
+		
+		
+		System.out.print("\nIngresa la edad: ");
+		edad = sc.nextInt();
+		if (edad < 18){
+		System.out.print("No eres mayor de edad, no puedes votar");
+		System.exit(0);}
+		else {
+		habitante.setEdad(edad);}
 
 		System.out.println("\n\n Datos introducidos: ");
 		System.out.println("\n-------------------------");
@@ -42,26 +53,28 @@ public class Pelecciones {
 		System.out.println("\nEl primer apellido del habitante es: " + habitante.getApellido1());
 		System.out.println("\nEl segundo apellido del habitante es: " + habitante.getApellido2());
 		System.out.println("\nEl DNI del habitante es: " + habitante.getDni());
-		System.out.println("\nLa fecha de nacimiento del habitante es: " + habitante.getFechnaci());
+		System.out.println("\nLa edad del habitante es: " + habitante.getEdad());
 		
 		System.out.println("\n-------------------------");
 
 	//Inmueble
-
+		
+		Scanner sci = new Scanner(System.in);
+		
 		System.out.print("\n--> Datos del inmueble:\n ");
 		
 		Inmueble inmueble = new Inmueble ();	
 
 		System.out.print("\nIngresa la localidad: ");
-		localidadin = sc.nextLine();
+		localidadin = sci.nextLine();
 		inmueble.setLocalidadin(localidadin);
 
 		System.out.print("\nIngresa la direccion: ");
-		direccionin = sc.nextLine();
+		direccionin = sci.nextLine();
 		inmueble.setDireccionin(direccionin);
 
 		System.out.print("\nIngresa el codigo postal: ");
-		cp = sc.nextInt();
+		cp = sci.nextInt();
 		inmueble.setCp(cp);
 
 		System.out.println("\n\n Datos introducidos: ");
@@ -139,6 +152,35 @@ public class Pelecciones {
 
 		System.out.print("\n--> Datos del partido: \n");
 
+		try {	
+
+			int i = 0;
+			String salida;
+
+			File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
+			FileReader leer = new FileReader (archivo);
+			BufferedReader bf = new BufferedReader(leer);
+			ArrayList <String> aList = new ArrayList <String>();
+			salida = bf.readLine();
+
+		while (salida != null) {
+				aList.add(salida);
+				salida = bf.readLine();
+					}
+						
+			System.out.println("\nEstos son los partidos que hay disponibles");
+
+			for(int r=0;r<aList.size();r++)
+			{
+   				 System.out.println(" + "+aList.get(r));
+			}
+		}
+		catch (IOException ioe) {
+			System.out.println("Error E/S: " + ioe);
+		}
+
+
+
 		Partido partido = new Partido ();	
 
 		System.out.print("\nIngresa el nombre: ");
@@ -161,5 +203,7 @@ public class Pelecciones {
 		System.out.println("\nEl mayor representante: " + partido.getRepres());
 
 		System.out.println("\n-------------------------");
+
+		
 	}
 }

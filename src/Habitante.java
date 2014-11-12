@@ -3,7 +3,9 @@ public class Habitante {
 	private String ape1;
 	private String ape2;
 	private String dni;
-	private String fechnaci;
+	int edad;
+
+	
 
 	public void setNombre (String izena){
 		nombre = izena;
@@ -35,11 +37,11 @@ public class Habitante {
 		return dni;
 	}
 
-	public void setFechnaci (String je){
-		fechnaci = je;
+	public void setEdad (int ad){
+		edad = ad;
 	}
 
-	public String getFechnaci(){
-		return fechnaci;
+	public int getEdad(){
+		return edad;
 	}
 }
