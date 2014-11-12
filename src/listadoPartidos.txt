@@ -1,5 +1,5 @@
-Bildu
-PNV
-Podemos
-PSOE
-PP
+Bildu,BLD,Jon Auzmendi
+Partido Nacionalista Vasco,PNV,Telmo Arzelus
+Podemos,PO,Odei Alba
+Partido Socialista Obrero Español,PSOE,Egoitz Barrena
+Partido Popular,PP,Francisco Franco

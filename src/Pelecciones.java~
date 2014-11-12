@@ -153,26 +153,26 @@ public class Pelecciones {
 		System.out.print("\n--> Datos del partido: \n");
 
 		try {	
-
-			int i = 0;
 			String salida;
 
 			File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
 			FileReader leer = new FileReader (archivo);
 			BufferedReader bf = new BufferedReader(leer);
-			ArrayList <String> aList = new ArrayList <String>();
+			ArrayList <String> lista = new ArrayList <String>();
 			salida = bf.readLine();
 
 		while (salida != null) {
-				aList.add(salida);
-				salida = bf.readLine();
+				lista.add(salida);
+				salida = bf.readLine();				
 					}
-						
+			
+			System.out.println(salida);			
+			
 			System.out.println("\nEstos son los partidos que hay disponibles");
 
-			for(int r=0;r<aList.size();r++)
+			for(int r=0;r<lista.size();r++)
 			{
-   				 System.out.println(" + "+aList.get(r));
+   				 System.out.println(" + "+lista.get(r));
 			}
 		}
 		catch (IOException ioe) {
