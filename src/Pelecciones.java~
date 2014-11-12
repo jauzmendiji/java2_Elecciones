@@ -168,7 +168,7 @@ public class Pelecciones {
 				salida = bf.readLine();
 					}
 						
-			System.out.println("Estos son los partidos que hay disponibles");
+			System.out.println("\nEstos son los partidos que hay disponibles");
 
 			for(int r=0;r<aList.size();r++)
 			{

@@ -153,8 +153,6 @@ public class Pelecciones {
 		System.out.print("\n--> Datos del partido: \n");
 
 		try {	
-
-			int i = 0;
 			String salida;
 
 			File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
