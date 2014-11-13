@@ -9,7 +9,7 @@ public class Pelecciones {
 		int cp, area, edad;
 		
 
-	/*//Habitante
+	//Habitante
 
 		Habitante habitante = new Habitante ();	
 
@@ -46,17 +46,22 @@ public class Pelecciones {
 		else {
 		habitante.setEdad(edad);}
 
-		System.out.println("\n\n Datos introducidos: ");
-		System.out.println("\n-------------------------");
+		try{
+            
+            FileWriter fw = new FileWriter("/home/zubiri/proyectojava/java2/java2_Elecciones/src/censo.txt", true);
+            //Escribimos en el fichero
+            fw.write(nombre + "," + ape1 + "," + ape2 + "," + dni + "," + edad + "\n");
+            //Cierro
+            fw.close(); 
+            //Abro el stream, el fichero debe existir
+            FileReader fr = new FileReader("/home/zubiri/proyectojava/java2/java2_Elecciones/src/censo.txt");
+            //Cerramos el stream
+            fr.close();
+        }catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
 
-		System.out.println("\nEl nombre del habitante es: " + habitante.getNombre());
-		System.out.println("\nEl primer apellido del habitante es: " + habitante.getApellido1());
-		System.out.println("\nEl segundo apellido del habitante es: " + habitante.getApellido2());
-		System.out.println("\nEl DNI del habitante es: " + habitante.getDni());
-		System.out.println("\nLa edad del habitante es: " + habitante.getEdad());
 		
-		System.out.println("\n-------------------------");
-
 	//Inmueble
 		
 		Scanner sci = new Scanner(System.in);
@@ -77,15 +82,7 @@ public class Pelecciones {
 		cp = sci.nextInt();
 		inmueble.setCp(cp);
 
-		System.out.println("\n\n Datos introducidos: ");
-		System.out.println("\n-------------------------");
-
-		System.out.println("\nLa localidad es: " + inmueble.getLocalidadin());
-		System.out.println("\nLa direccion es: " + inmueble.getDireccionin());
-		System.out.println("\nEl codigo postal es: " + inmueble.getCp());
-
-		System.out.println("\n-------------------------");
-
+		
 	//Espacio Pubilico
 
 		System.out.print("\n--> Datos del espacio publico: \n");
@@ -105,14 +102,6 @@ public class Pelecciones {
 		area = sc1.nextInt();
 		ep.setArea(area);
 
-		System.out.println("\n\n Datos introducidos: ");
-		System.out.println("\n-------------------------");
-
-		System.out.println("\nEl tipo de espacio es: " + ep.getTipo());
-		System.out.println("\nLa direccion es: " + ep.getDireccionep());
-		System.out.println("\nEl tamaño es: " + ep.getArea() + "m2");
-
-		System.out.println("\n-------------------------");
 	
 	//Ayuntamiento
 
@@ -138,7 +127,87 @@ public class Pelecciones {
 		partidop = sc2.nextLine();
 		ayun.setPartidop(partidop);
 
-		System.out.println("\n\n Datos introducidos: ");
+		
+	//Salida habitante
+
+		System.out.print("\n--> Datos de los votantes: \n");
+		ArrayList<Habitante> alHabitante= new ArrayList<Habitante>();
+
+		File censo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/censo.txt");
+		Scanner salidah = null;
+
+		try {	
+			
+			salidah = new Scanner(censo);
+		 	while (salidah.hasNextLine()) {
+
+			String lineah = salidah.nextLine();			
+
+			String[] corte = lineah.split(",");
+			Habitante habit = new Habitante();
+			habit.setNombre(corte[0]);
+			habit.setApellido1(corte[1]);
+			habit.setApellido2(corte[2]);
+			habit.setDni(corte[3]);
+
+			int edadh = Integer.parseInt(corte[4]);
+			habit.setEdad(edadh);
+
+			alHabitante.add(habit);}
+			
+			Iterator<Habitante> itrHabitante = alHabitante.iterator();
+
+		while(itrHabitante.hasNext()){
+			Habitante habit = (Habitante)itrHabitante.next();
+			
+			System.out.println("\nNombre del habitante: " + habit.getNombre());
+			System.out.println("Primer apellido del habitante: " + habit.getApellido1());
+			System.out.println("Segundo Apellido del habitante: " + habit.getApellido2());
+			System.out.println("DNI del habitante: " + habit.getDni());
+			System.out.println("Edad del habitante: " + habit.getEdad());
+			System.out.println("\n-------------------------------");}
+
+		}
+		catch (IOException ioe) {
+			System.out.println("Error E/S: " + ioe);
+		}
+
+		/*System.out.println("\n\n Datos del habitante: ");
+		System.out.println("\n-------------------------");
+
+		System.out.println("\nEl nombre del habitante es: " + habitante.getNombre());
+		System.out.println("\nEl primer apellido del habitante es: " + habitante.getApellido1());
+		System.out.println("\nEl segundo apellido del habitante es: " + habitante.getApellido2());
+		System.out.println("\nEl DNI del habitante es: " + habitante.getDni());
+		System.out.println("\nLa edad del habitante es: " + habitante.getEdad());
+		
+		System.out.println("\n-------------------------");*/
+
+	//Salida inmueble
+
+		System.out.println("\n\n Datos del inmueble: ");
+		System.out.println("\n-------------------------");
+
+		System.out.println("\nLa localidad es: " + inmueble.getLocalidadin());
+		System.out.println("\nLa direccion es: " + inmueble.getDireccionin());
+		System.out.println("\nEl codigo postal es: " + inmueble.getCp());
+
+		System.out.println("\n-------------------------");
+
+	//Salida Espacio Publico
+
+		System.out.println("\n\n Datos del espacio publico: ");
+		System.out.println("\n-------------------------");
+
+		System.out.println("\nEl tipo de espacio es: " + ep.getTipo());
+		System.out.println("\nLa direccion es: " + ep.getDireccionep());
+		System.out.println("\nEl tamaño es: " + ep.getArea() + "m2");
+
+		System.out.println("\n-------------------------");
+
+	//Salida Ayuntamiento
+
+		System.out.println("\n\n Datos Ayuntamiento: ");
 		System.out.println("\n-------------------------");
 
 		System.out.println("\nLa direccion es: " + ayun.getDireccionay());
@@ -146,13 +215,13 @@ public class Pelecciones {
 		System.out.println("\nEl alcalde es: " + ayun.getAlcalde());
 		System.out.println("\nPertence al partido: " +ayun.getPartidop());
 
-		System.out.println("\n-------------------------");*/
+		System.out.println("\n-------------------------");
 
 	//Partidos
 
 		
 		System.out.print("\n--> Datos del partido: \n");
-		ArrayList<Partido> partidos = new ArrayList<Partido>();
+		ArrayList<Partido> listcort = new ArrayList<Partido>();
 
 		File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
 		Scanner salida = null;
@@ -172,13 +241,13 @@ public class Pelecciones {
 			part.setSiglas(corte[1]);
 			part.setRepres(corte[2]);
 
-			partidos.add(part);}
+			listcort.add(part);}
 			
-			Iterator<Partido> itrPartido = partidos.iterator();
+			Iterator<Partido> itrPartido = listcort.iterator();
 		while(itrPartido.hasNext()){
-			Partido part = itrPartido.next();
+			Partido part = (Partido)itrPartido.next();
 			
-			System.out.println("\nNombre del partido: " + part.getSiglas());
+			System.out.println("\nNombre del partido: " + part.getNombrepar());
 			System.out.println("Siglas del partido: " + part.getSiglas());
 			System.out.println("Maximo representante: " + part.getRepres());
 			System.out.println("\n-------------------------------");}
@@ -187,6 +256,5 @@ public class Pelecciones {
 		catch (IOException ioe) {
 			System.out.println("Error E/S: " + ioe);
 		}
-	
 	}
 }
