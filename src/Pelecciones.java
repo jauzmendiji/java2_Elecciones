@@ -9,7 +9,7 @@ public class Pelecciones {
 		int cp, area, edad;
 		
 
-	//Habitante
+	/*//Habitante
 
 		Habitante habitante = new Habitante ();	
 
@@ -146,62 +146,47 @@ public class Pelecciones {
 		System.out.println("\nEl alcalde es: " + ayun.getAlcalde());
 		System.out.println("\nPertence al partido: " +ayun.getPartidop());
 
-		System.out.println("\n-------------------------");
+		System.out.println("\n-------------------------");*/
 
 	//Partidos
 
+		
 		System.out.print("\n--> Datos del partido: \n");
+		ArrayList<Partido> partidos = new ArrayList<Partido>();
+
+		File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
+		Scanner salida = null;
 
 		try {	
-			String salida;
+			
+			
+			System.out.println("\nEstos son los partidos que hay disponibles:");
+			salida = new Scanner(archivo);
+		 	while (salida.hasNextLine()) {
 
-			File archivo = new File("/home/zubiri/proyectojava/java2/java2_Elecciones/src/listadoPartidos.txt");
-			FileReader leer = new FileReader (archivo);
-			BufferedReader bf = new BufferedReader(leer);
-			ArrayList <String> lista = new ArrayList <String>();
-			salida = bf.readLine();
+			String linea = salida.nextLine();			
 
-		while (salida != null) {
-				lista.add(salida);
-				salida = bf.readLine();				
-					}
-						
-			System.out.println("\nEstos son los partidos que hay disponibles");
+			String[] corte = linea.split(",");
+			Partido part = new Partido();
+			part.setNombrepar(corte[0]);
+			part.setSiglas(corte[1]);
+			part.setRepres(corte[2]);
 
-			for(int r=0;r<lista.size();r++)
-			{
-   				 System.out.println(" + "+lista.get(r));
-			}
+			partidos.add(part);}
+			
+			Iterator<Partido> itrPartido = partidos.iterator();
+		while(itrPartido.hasNext()){
+			Partido part = itrPartido.next();
+			
+			System.out.println("\nNombre del partido: " + part.getSiglas());
+			System.out.println("Siglas del partido: " + part.getSiglas());
+			System.out.println("Maximo representante: " + part.getRepres());
+			System.out.println("\n-------------------------------");}
+
 		}
 		catch (IOException ioe) {
 			System.out.println("Error E/S: " + ioe);
 		}
-
-
-
-		Partido partido = new Partido ();	
-
-		System.out.print("\nIngresa el nombre: ");
-		nombrepar = sc2.nextLine();
-		partido.setNombrepar(nombrepar);
-
-		System.out.print("\nIngresa las siglas: ");
-		siglas = sc2.nextLine();
-		partido.setSiglas(siglas);
-
-		System.out.print("\nIngresa el nombre y los apellidos del mayor representante: ");
-		repres = sc2.nextLine();
-		partido.setRepres(repres);
-
-		System.out.println("\n\n Datos introducidos: ");
-		System.out.println("\n-------------------------");
-
-		System.out.println("\nEl partido es: " + partido.getNombrepar());
-		System.out.println("\nLas siglas son: " + partido.getSiglas());
-		System.out.println("\nEl mayor representante: " + partido.getRepres());
-
-		System.out.println("\n-------------------------");
-
-		
+	
 	}
 }
