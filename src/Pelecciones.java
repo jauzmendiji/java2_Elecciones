@@ -40,11 +40,7 @@ public class Pelecciones {
 		
 		System.out.print("\nIngresa la edad: ");
 		edad = sc.nextInt();
-		if (edad < 18){
-		System.out.print("No eres mayor de edad, no puedes votar");
-		System.exit(0);}
-		else {
-		habitante.setEdad(edad);}
+		habitante.setEdad(edad);
 
 		try{
             
@@ -153,8 +149,9 @@ public class Pelecciones {
 			int edadh = Integer.parseInt(corte[4]);
 			habit.setEdad(edadh);
 
+			if (edadh >= 18){
 			alHabitante.add(habit);}
-			
+			}		
 			Iterator<Habitante> itrHabitante = alHabitante.iterator();
 
 		while(itrHabitante.hasNext()){
